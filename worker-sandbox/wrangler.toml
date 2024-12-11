@@ -9,7 +9,13 @@ kv_namespaces = [
     { binding = "FILE_SIZES", id = "FILE_SIZES", preview_id = "FILE_SIZES" },
 ]
 
-vars = { SOME_VARIABLE = "some value" }
+[vars]
+SOME_VARIABLE = "some value"
+SOME_OBJECT_VARIABLE = { foo = 42, bar = "string" }
+
+[assets]
+binding = "ASSETS"
+directory = "./public/"
 
 [[services]]
 binding = "remote"
@@ -68,3 +74,6 @@ main = "./shim.mjs"
 [[build.upload.rules]]
 globs = ["**/*.wasm"]
 type = "CompiledWasm"
+
+[package.metadata.wasm-pack.profile.dev.wasm-bindgen]
+dwarf-debug-info = true

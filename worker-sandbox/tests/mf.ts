@@ -48,6 +48,11 @@ export const mf = new Miniflare({
   bindings: {
     EXAMPLE_SECRET: "example",
     SOME_SECRET: "secret!",
+    SOME_VARIABLE: "some value",
+    SOME_OBJECT_VARIABLE: {
+      foo: 42,
+      bar: "string"
+    },
   },
   durableObjects: {
     COUNTER: "Counter",
@@ -68,8 +73,8 @@ export const mf = new Miniflare({
   queueProducers: ["my_queue", "my_queue"],
   fetchMock: mockAgent,
   assets: {
-    path: "./public",
-    bindingName: "ASSETS",
+    directory: "./public",
+    binding: "ASSETS",
     routingConfig: {
       has_user_worker: true,
     },
